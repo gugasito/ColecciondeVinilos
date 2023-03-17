@@ -18,7 +18,7 @@ public class Main {
         System.out.println("Espacio máximo colección " + vinilos.length);
 
         mostrarTotal(vinilos);
-        mostrarDisponibles();
+        mostrarDisponibles(vinilos);
 
         String artista = "AC-DC";
         System.out.println("Buscar artista " + artista);
@@ -30,6 +30,16 @@ public class Main {
     }
 
     public static void mostrarColeccion(String[][] vinilos) {
+        for (int i = 0; i < vinilos.length - 1; i++) {
+            if (vinilos[i][0] == null) {
+                break;
+            }
+            System.out.print("Fila " + (i + 1) + ": ");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(vinilos[i][j] + " - ");
+            }
+            System.out.println("");
+        }
     }
 
     public static boolean buscarArtista(String[][] vinilos, String artista) {
@@ -39,7 +49,10 @@ public class Main {
     public static void mostrarBusquedaArtista(String[][] vinilos, String artista) {
     }
 
-    public static void mostrarDisponibles() {
+    public static void mostrarDisponibles(String m[][]) {
+
+        // int total = m.length-usados;
+        //System.out.println("Hay un total de: "+ total + " espacios disponibles en la colección");
     }
 
     public static void mostrarTotal(String[][] vinilos) {
