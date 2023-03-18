@@ -15,7 +15,7 @@ public class Main {
         agregarVinilo(vinilos, "Judas Priest", "Defenders of the faith", "1984");
         agregarVinilo(vinilos, "Kiss", "Destroyer", "1976");
 
-        System.out.println("Espacio máximo colección " + vinilos.length);
+        System.out.println("Espacio máximo colección: " + vinilos.length);
 
         mostrarTotal(vinilos);
         mostrarDisponibles(vinilos);
@@ -43,31 +43,68 @@ public class Main {
     }
 
     public static boolean buscarArtista(String[][] vinilos, String artista) {
-        return false;
+        boolean caso = false;
+        String busqueda;
+        for (int i = 0; i < totalVinilos(vinilos) - 1; i++) {
+            busqueda = vinilos[i][0];
+            if (busqueda.equals(artista)) {
+                caso = true;
+            }
+        }
+        return caso;
     }
 
     public static void mostrarBusquedaArtista(String[][] vinilos, String artista) {
+        if (buscarArtista(vinilos, artista) == true) {
+            System.out.println("El artista " + artista + " si está en la colección");
+        }
+
     }
 
     public static void mostrarDisponibles(String m[][]) {
-
-        // int total = m.length-usados;
-        //System.out.println("Hay un total de: "+ total + " espacios disponibles en la colección");
+        System.out.println("Hay un total de: " + disponibles(m) + " espacios disponibles en la colección");
     }
 
     public static void mostrarTotal(String[][] vinilos) {
+        System.out.println("Hay " + totalVinilos(vinilos) + " vinilos en la colección");
     }
 
     public static String[][] agregarVinilo(String m[][], String grupo, String disco, String año) {
+        int count = 0;
+        for (int i = 0; i < 10; i++) {
+            if (m[i][0] == null) {
+                break;
+            }
+            count++;
+        }
 
-        return null;
+        m[count][0] = grupo;
+        m[count][1] = disco;
+        m[count][2] = año;
+
+        return m;
     }
 
     public static int totalVinilos(String m[][]) {
-        return 0;
+        int count = 0;
+        for (int i = 0; i < 10; i++) {
+            if (m[i][0] == null) {
+                break;
+            }
+            count++;
+        }
+        return count;
     }
 
     public static int disponibles(String m[][]) {
-        return 0;
+        int count = 0;
+        for (int i = 0; i < 10; i++) {
+            if (m[i][0] == null) {
+                break;
+            }
+            count++;
+        }
+        int total = m.length - count;
+        return total;
     }
 }
